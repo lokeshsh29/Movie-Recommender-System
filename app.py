@@ -13,7 +13,7 @@ movies_dict_path='artifacts/preprocessor.pkl'
 
 def fetch_poster(movie_id):
     tmdb_api_key = os.getenv('TMDB_API_KEY')
-    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key={tmdb_api_key}&language=en-US'.format(movie_id, tmdb_api_key))
+    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'.format(movie_id, tmdb_api_key))
     data = response.json()
     #https://image.tmdb.org/t/p/w500/
     return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
