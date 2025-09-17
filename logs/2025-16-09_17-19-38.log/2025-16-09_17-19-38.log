@@ -1,0 +1,5 @@
+[2025-09-16 17:19:38,932] 22 root - INFO - Entered the data ingestion method or component
+[2025-09-16 17:19:39,134] 27 root - INFO - Read the dataset as dataframe
+[2025-09-16 17:19:39,434] 34 root - INFO - Ingestion of the data is completed
+[2025-09-16 17:19:39,644] 70 root - INFO - Read raw data completed
+[2025-09-16 17:19:39,646] 112 root - ERROR - Error occurred during data transformation

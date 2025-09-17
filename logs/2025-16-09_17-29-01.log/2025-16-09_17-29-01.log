@@ -1,0 +1,7 @@
+[2025-09-16 17:29:02,189] 22 root - INFO - Entered the data ingestion method or component
+[2025-09-16 17:29:02,396] 27 root - INFO - Read the dataset as dataframe
+[2025-09-16 17:29:02,699] 34 root - INFO - Ingestion of the data is completed
+[2025-09-16 17:29:02,915] 70 root - INFO - Read raw data completed
+[2025-09-16 17:29:07,259] 107 root - INFO - Saved preprocessing object
+[2025-09-16 17:29:07,264] 26 root - INFO - Splitting training and testing input data
+[2025-09-16 17:29:07,671] 40 root - INFO - Model trained successfully

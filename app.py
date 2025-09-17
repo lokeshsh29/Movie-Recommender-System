@@ -2,12 +2,18 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import scipy.sparse as sp
+from src.utils import load_object_sparse,load_object
+
+model_path='artifacts/model.npz'
+movies_dict_path='artifacts/preprocessor.pkl'
 
 def fetch_poster(movie_id):
     response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=d0d340396285e07f8abd1f898b2e5ae4&language=en-US'.format(movie_id))
     data = response.json()
     #https://image.tmdb.org/t/p/w500/
     return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
+
 def recommend(movie):
     movie_index = movies[movies['title'] == movie].index[0]
     distances = similarity[movie_index]
@@ -25,10 +31,9 @@ def recommend(movie):
 
     return recommended_movies,recommended_movies_posters
 
-movies_dict = pickle.load(open('movies_dict.pkl','rb'))
+movies_dict = load_object(movies_dict_path)
 movies = pd.DataFrame(movies_dict)
-similarity = pickle.load(open('similarity.pkl','rb'))
-
+similarity = load_object_sparse(model_path).toarray()
 
 st.title('Movie Recommender System')
 
