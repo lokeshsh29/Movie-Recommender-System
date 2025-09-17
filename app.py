@@ -1,15 +1,19 @@
 import streamlit as st
-import pickle
+import os
 import pandas as pd
 import requests
 import scipy.sparse as sp
 from src.utils import load_object_sparse,load_object
+from dotenv import load_dotenv
+
+load_dotenv()
 
 model_path='artifacts/model.npz'
 movies_dict_path='artifacts/preprocessor.pkl'
 
 def fetch_poster(movie_id):
-    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=d0d340396285e07f8abd1f898b2e5ae4&language=en-US'.format(movie_id))
+    tmdb_api_key = os.getenv('TMDB_API_KEY')
+    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key={tmdb_api_key}&language=en-US'.format(movie_id, tmdb_api_key))
     data = response.json()
     #https://image.tmdb.org/t/p/w500/
     return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
